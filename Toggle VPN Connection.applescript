@@ -1,9 +1,7 @@
 -- Script toggles connection to VPN.
--- The name of VPN sets in this variable ↓
+-- The name of VPN sets in this variable ↓ (see its value in System Preferences → Network)
 
-set VPNServiceName to "NGS" -- ← Here it is.
-
--- I use the only one VPN, so, there is no Alfred’s query
+set VPNServiceName to "NGS"
 
 tell application "System Events"
 	tell current location of network preferences
