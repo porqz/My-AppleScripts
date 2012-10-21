@@ -1,3 +1,5 @@
+—— Insert in iTunes’s search field query and tries to search
+
 on alfred_script(q)
 	set query to (q as text)
 	
@@ -7,10 +9,12 @@ on alfred_script(q)
 	end tell
 
 	tell application "System Events"
-		 tell process "iTunes"
-			set value of text field 1 of window "iTunes" to query
-			keystroke "f" using { command down, option down }
-		 end tell
+		tell process "iTunes"
+			tell window "iTunes"
+				set focused of text field 1 to true
+				set value of text field 1 to query
+			end tell
+		end tell
 	end tell
 
 end alfred_script
