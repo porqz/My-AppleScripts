@@ -8,7 +8,7 @@ on alfred_script(q)
 
 	tell application "System Events"
 		 tell process "iTunes"
-			set value of text field 1 of window "iTunes"  to query
+			set value of text field 1 of window "iTunes" to query
 			keystroke "f" using { command down, option down }
 		 end tell
 	end tell
