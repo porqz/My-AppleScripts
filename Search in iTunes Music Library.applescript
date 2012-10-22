@@ -2,7 +2,7 @@
 
 on alfred_script(q)
 	set query to (q as text)
-	
+
 	tell application "iTunes"
 		activate
 		reveal playlist "Music"
