@@ -1,24 +1,5 @@
 -- The script mounts volumes with SSHFS
 
-on toLowerCase(someText)
-	return do shell script "echo '" & someText & "' | tr '[:upper:]' '[:lower:]'"
-end toLowerCase
-
-on capitalize(someText) -- to do
-	return someText
-end capitalize
-
-
-on fileExists(fileName)
-	tell application "Finder"
-		return exists fileName as POSIX file
-	end tell
-end fileExists
-
-on isMounted(volumeName)
-	return fileExists("/Volumes/" & volumeName)
-end isMounted
-
 on mountWithSSHFS(volumeName)
 	set username to "username" -- Remote system user login
 	set server to "server.domain.com" -- Server address
@@ -34,6 +15,25 @@ on mountWithSSHFS(volumeName)
 		do shell script SSHFSApplicationPath & " " & username & "@" & server & ":" & workingDirectoryPath & " " & volumesDirectoryPath & "/" & capitalize(volumeName) & " -o " & options
 	end if
 end mountWithSSHFS
+
+on fileExists(fileName)
+	tell application "Finder"
+		return exists fileName as POSIX file
+	end tell
+end fileExists
+
+on isMounted(volumeName)
+	return fileExists("/Volumes/" & volumeName)
+end isMounted
+
+
+on toLowerCase(someText)
+	return do shell script "echo '" & someText & "' | tr '[:upper:]' '[:lower:]'"
+end toLowerCase
+
+on capitalize(someText) -- to do
+	return someText
+end capitalize
 
 
 -- int main(...)
