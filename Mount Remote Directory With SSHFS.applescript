@@ -24,7 +24,7 @@ on mountWithSSHFS(volumeName)
 	set server to "server.domain.com" -- Server address
 
 	set workingDirectoryPath to "/" -- Working directory on the server, will mounted!
-	set volumesDirectoryPath to "/Volumes" —— Can’t touch this
+	set volumesDirectoryPath to "/Volumes"
 
 	set SSHFSApplicationPath to "/usr/local/bin/sshfs" -- Simple "sshfs" does not work for me
 	set options to "'auto_cache,reconnect,volname=" & capitalize(volumeName) & ",uid=501,gid=20'" -- Options: caching, automatic reconnect, set volume name to volumeName variable value
