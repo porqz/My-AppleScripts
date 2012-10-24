@@ -1,11 +1,16 @@
 —— Sync iPhone / iPod / iPad
 
 tell application "iTunes"
-	run
-	delay 10
+	tell application "System Events" to set iTunesIsRunning to (name of processes) contains "iTunes"
+	
+	if not iTunesIsRunning then
+		run
+		delay 10
+	end if
+	
 	repeat with sourceItem in sources
 		if kind of sourceItem is iPod
-			update source
+			update sourceItem
 		end if
 	end repeat
 end tell
