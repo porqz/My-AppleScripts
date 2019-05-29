@@ -1,44 +1,37 @@
--- The script mounts volumes with SSHFS
+-- Mount a volume with SSHFS
 
 on mountWithSSHFS(volumeName)
-	set username to "username" -- Remote system user login
-	set server to "server.domain.com" -- Server address
+	set username to "username" -- Remote server user login
+	set server to "server.domain.com" -- Remote server address
 
-	set workingDirectoryPath to "/" -- Working directory on the server, will mounted!
+	set workingDirectoryPath to "/" -- Working directory on the remote server to be mounted
 	set volumesDirectoryPath to "/Volumes"
 
-	set SSHFSApplicationPath to "/usr/local/bin/sshfs" -- Simple "sshfs" does not work for me
-	set options to "'auto_cache,reconnect,volname=" & capitalize(volumeName) & ",uid=501,gid=20'" -- Options: caching, automatic reconnect, set volume name to volumeName variable value
+	set SSHFSBinaryPath to "/usr/local/bin/sshfs" -- Simple "sshfs" does not work for me
 
-	if not isMounted(volumeName) then
+	 -- Options: caching, automatic reconnect, set volume name to volumeName variable value
+	set options to "'auto_cache,reconnect,volname=" & volumeName & ",uid=501,gid=20'"
+
+	if not isVolumeMounted(volumeName) then
 		do shell script "mkdir " & volumesDirectoryPath & "/" & volumeName
-		do shell script SSHFSApplicationPath & " " & username & "@" & server & ":" & workingDirectoryPath & " " & volumesDirectoryPath & "/" & capitalize(volumeName) & " -o " & options
+		do shell script SSHFSBinaryPath & " " & username & "@" & server & ":" & workingDirectoryPath & " " & volumesDirectoryPath & "/" & volumeName & " -o " & options
 	end if
 end mountWithSSHFS
 
-on fileExists(fileName)
+on isFileExist(fileName)
 	tell application "Finder"
 		return exists fileName as POSIX file
 	end tell
-end fileExists
+end isFileExist
 
-on isMounted(volumeName)
-	return fileExists("/Volumes/" & volumeName)
-end isMounted
-
-
-on toLowerCase(someText)
-	return do shell script "echo '" & someText & "' | tr '[:upper:]' '[:lower:]'"
-end toLowerCase
-
-on capitalize(someText) -- to do
-	return someText
-end capitalize
+on isVolumeMounted(volumeName)
+	return isFileExist("/Volumes/" & volumeName)
+end isVolumeMounted
 
 
--- int main(...)
+-- Alfred.app entry point
 on alfred_script(q)
 	set volumeName to (q as text)
-	
+
 	mountWithSSHFS(volumeName)
 end alfred_script

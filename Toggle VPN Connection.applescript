@@ -1,17 +1,17 @@
--- Script toggles connection to VPN.
--- The name of VPN sets in this variable ↓ (see its value in System Preferences → Network)
+-- Toggle connection to VPN
 
-set VPNServiceName to "NGS"
+-- A name of a VPN connection (see its value in System Preferences ? Network)
+set VPNName to "Some VPN"
 
 tell application "System Events"
 	tell current location of network preferences
-		set VPNservice to service VPNServiceName
-		set isConnected to connected of current configuration of VPNservice
+		set VPNService to service VPNName
+		set isVPNConnected to connected of current configuration of VPNService
 
-		if isConnected then
-			disconnect VPNservice
+		if isVPNConnected then
+			disconnect VPNService
 		else
-			connect VPNservice
+			connect VPNService
 		end if
 	end tell
 end tell

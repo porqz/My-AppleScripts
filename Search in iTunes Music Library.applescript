@@ -1,4 +1,4 @@
-—— Insert in iTunes’s search field query and tries to search
+-- Search a text in iTunes Music library
 
 on alfred_script(q)
 	set query to (q as text)

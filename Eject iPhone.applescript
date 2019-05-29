@@ -1,9 +1,9 @@
-—— Eject iPhone / iPod / iPad
+-- Eject an iPhone / iPod / iPad
 
 tell application "iTunes"
-	tell application "System Events" to set iTunesIsRunning to (name of processes) contains "iTunes"
-	
-	if not iTunesIsRunning then
+	tell application "System Events" to set isITunesRun to (name of processes) contains "iTunes"
+
+	if not isITunesRun then
 		run
 		delay 10
 	end if
