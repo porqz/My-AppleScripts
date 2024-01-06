@@ -1,6 +1,6 @@
 My AppleScripts
 ===============
 
-This is collection of AppleScripts written by myself. Usually these scripts are used with [Alfred.app](http://www.alfredapp.com/). Some scripts are useful, some aren’t.
+This is a collection of AppleScripts written by myself. Mostly I use them with [Alfred.app](https://www.alfredapp.com/). Some scripts are useful, some aren’t.
 
 Enjoy.

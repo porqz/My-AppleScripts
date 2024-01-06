@@ -1,4 +1,4 @@
--- Mount a volume with SSHFS
+-- Mounts a volume with SSHFS
 
 on mountWithSSHFS(volumeName)
 	set username to "username" -- Remote server user login
@@ -9,7 +9,7 @@ on mountWithSSHFS(volumeName)
 
 	set SSHFSBinaryPath to "/usr/local/bin/sshfs" -- Simple "sshfs" does not work for me
 
-	 -- Options: caching, automatic reconnect, set volume name to volumeName variable value
+	-- Options: caching, automatic reconnect, set volume name to volumeName variable value
 	set options to "'auto_cache,reconnect,volname=" & volumeName & ",uid=501,gid=20'"
 
 	if not isVolumeMounted(volumeName) then

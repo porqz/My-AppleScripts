@@ -1,4 +1,4 @@
--- Sync an iPhone / iPod / iPad with iTunes
+-- Syncs an iPhone / iPod / iPad with iTunes
 
 tell application "iTunes"
 	tell application "System Events" to set isITunesRun to (name of processes) contains "iTunes"

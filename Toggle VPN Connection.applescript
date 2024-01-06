@@ -1,6 +1,6 @@
--- Toggle connection to VPN
+-- Toggles connection to VPN
 
--- A name of a VPN connection (see its value in System Preferences ? Network)
+-- A name of a VPN connection (see its value in System Preferences → Network)
 set VPNName to "Some VPN"
 
 tell application "System Events"

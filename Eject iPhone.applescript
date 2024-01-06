@@ -1,4 +1,4 @@
--- Eject an iPhone / iPod / iPad
+-- Ejects an iPhone / iPod / iPad
 
 tell application "iTunes"
 	tell application "System Events" to set isITunesRun to (name of processes) contains "iTunes"
