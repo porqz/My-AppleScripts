@@ -2,6 +2,7 @@
 
 if application "OpenVPN Connect" is not running then
 	run application "OpenVPN Connect"
+	delay 5
 end if
 
 tell application "System Events"
@@ -13,4 +14,3 @@ tell application "System Events"
 		end if
 	end tell
 end tell
-
